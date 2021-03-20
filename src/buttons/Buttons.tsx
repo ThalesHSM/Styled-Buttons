@@ -1,95 +1,72 @@
-import React, { useState } from "react";
+import { ButtonDiv, Text, Button, Div, Header } from "./StyledButtons";
 
 import {
-  ButtonDiv,
-  Text,
-  Button,
-  ButtonShadow,
-  ButtonSize,
-  ButtonColor,
-  Div,
-  Header,
-} from "./StyledButtons";
+  FiGithub,
+  FiDroplet,
+  FiMoon,
+  FiSettings,
+  FiPlay,
+} from "react-icons/fi";
 
-import { FiGithub } from "react-icons/fi";
-
-const Buttons: React.FC = () => {
-  const [isActive, setIsActive] = useState(false);
-  const [color, setColor] = useState(false);
-  const [size, setSize] = useState(false);
-  const [border, setBorder] = useState(false);
-  const [icon, setIcon] = useState(false);
-
-  function handleShadowButton() {
-    setIsActive(!isActive);
-  }
-
-  function handleChangeColor() {
-    setColor(!color);
-  }
-
-  function handleChangeSize() {
-    setSize(!size);
-  }
-
-  function handleBorderChange() {
-    setBorder(!border);
-  }
-
-  function handleIconChange() {
-    setIcon(!icon);
-  }
-
+const Buttons = () => {
   return (
     <ButtonDiv>
       <Header>Buttons</Header>
 
       <Div>
         <Text>Simple Button</Text>
-        <Button onClick={handleBorderChange}>Default</Button>
+        <Button></Button>
       </Div>
 
       <Div>
         <Text>Button Shadow</Text>
-        <ButtonShadow onClick={handleShadowButton} isActive={isActive}>
-          Default
-        </ButtonShadow>
+        <Button ButtonShadowProp>Default</Button>
       </Div>
 
       <Div>
         <Text>Button Icon</Text>
-        {icon === true ? (
-          <Button onClick={handleIconChange}>
-            Default
-            <FiGithub />
-          </Button>
-        ) : (
-          <Button onClick={handleIconChange}>
-            <FiGithub />
-            Default
-          </Button>
-        )}
-      </Div>
+        <Button>
+          <FiGithub />
+          Default
+        </Button>
 
-      <Div>
-        <Text>Disabled Button</Text>
-        <Button onClick={handleBorderChange} disabled={true}>
-          Disabled
+        <Button>
+          <FiDroplet />
+          Default
+        </Button>
+
+        <Button>
+          <FiMoon />
+          Default
+        </Button>
+
+        <Button>
+          <FiSettings />
+          Default
+        </Button>
+
+        <Button>
+          <FiPlay />
+          Default
         </Button>
       </Div>
 
       <Div>
+        <Text>Disabled Button</Text>
+        <Button disabled>Disabled</Button>
+      </Div>
+
+      <Div>
         <Text>Button Size</Text>
-        <ButtonSize onClick={handleChangeSize} setSize={size}>
-          Change size
-        </ButtonSize>
+        <Button ButtonSizeProp="sm">Small</Button>
+        <Button ButtonSizeProp="lg">Large</Button>
       </Div>
 
       <Div>
         <Text>Button Color</Text>
-        <ButtonColor onClick={handleChangeColor} setColor={color}>
-          Change color
-        </ButtonColor>
+        <Button ButtonColorProp="green">Green</Button>
+        <Button ButtonColorProp="purple">Purple</Button>
+        <Button ButtonColorProp="orange">Orange</Button>
       </Div>
     </ButtonDiv>
   );
