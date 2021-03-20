@@ -1,6 +1,6 @@
 import React from "react";
-import { Div, Text, Header, ButtonDiv } from "./components/StyledButtons";
-import Button from "./components/Buttons";
+import { Div, Text, Header, ButtonDiv } from "./StyledApp";
+import Button from "./components/Button";
 
 import {
   FiGithub,
