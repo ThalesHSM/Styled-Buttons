@@ -2,9 +2,12 @@ import styled, { css } from "styled-components";
 import { shade } from "polished";
 
 interface IButton {
-  ButtonShadowProp?: boolean;
-  ButtonColorProp?: "purple" | "green" | "orange";
-  ButtonSizeProp?: "sm" | "md" | "lg";
+  children: any;
+  icon?: any;
+  disabled?: boolean;
+  size?: "sm" | "lg";
+  shouldShowShadow?: boolean;
+  color?: "purple" | "green" | "orange";
 }
 
 export const ButtonDiv = styled.div`
@@ -38,7 +41,6 @@ export const Div = styled.div`
   flex: 1;
   align-items: center;
   justify-content: space-between;
-  min-width: 400px;
   margin: 13px;
 `;
 export const Text = styled.p`
@@ -48,7 +50,7 @@ export const Text = styled.p`
   margin: 20px;
 `;
 
-export const Button = styled.button<IButton>`
+export const StyledButton = styled.button<IButton>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,38 +68,38 @@ export const Button = styled.button<IButton>`
   }
 
   ${(props) =>
-    props.ButtonShadowProp === true &&
+    props.shouldShowShadow === true &&
     css`
       box-shadow: 10px 10px 8px #888888;
     `}
 
   ${(props) =>
-    props.ButtonSizeProp === "sm" &&
+    props.size === "sm" &&
     css`
       transform: scale(0.8);
     `}
   ${(props) =>
-    props.ButtonSizeProp === "lg" &&
+    props.size === "lg" &&
     css`
       transform: scale(1.3);
     `}
 
     ${(props) =>
-    props.ButtonColorProp === "green"
+    props.color === "green"
       ? css`
           background-color: #54c481;
           &:hover {
             background: ${shade(0.2, "#54c481")};
           }
         `
-      : props.ButtonColorProp === "purple"
+      : props.color === "purple"
       ? css`
           background-color: #c34ac7;
           &:hover {
             background: ${shade(0.2, "#c34ac7")};
           }
         `
-      : props.ButtonColorProp === "orange" &&
+      : props.color === "orange" &&
         css`
           background-color: #f54a16;
           &:hover {
